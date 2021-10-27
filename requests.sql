@@ -187,3 +187,20 @@ SELECT emplacement,
   ROUND(AVG(capacite), 2) AS 'moyenne'
 FROM rayon
 GROUP BY emplacement;
+--
+--
+-- Pour supprimer une table
+DROP TABLE test;
+--
+--
+-- Création table produit avec création de la clé étrangère directement dans la directive CREATE TABLE
+CREATE TABLE produit (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nom VARCHAR(255) NOT NULL,
+  prix_ht DECIMAL(10, 2) NOT NULL,
+  content_desc TEXT,
+  illustration VARCHAR(255),
+  quantite INT NOT NULL,
+  rayon_id INT,
+  FOREIGN KEY (rayon_id) REFERENCES rayon(id)
+) ENGINE = INNODB;
