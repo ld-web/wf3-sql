@@ -1,0 +1,15 @@
+INSERT INTO rayon (nom, emplacement, capacite)
+VALUES ("Pain", "Boulangerie", 40),
+  ("Brioche", "Boulangerie", 40),
+  ("Tresse", "Boulangerie", NULL),
+  ("Gâteau au chocolat", "Pâtisserie", 5),
+  ("Ordinateurs", "Informatique", 200),
+  ("Tablettes", "Tech", 100),
+  ("Téléphones", "Tech", 300),
+  ("Caméras", "Tech", 30),
+  ("Ecrans", "Informatique", NULL),
+  ("Rôtis", "Traiteur", NULL),
+  ("Pizzas", "Traiteur", 35),
+  ("Tacos", "Restauration rapide", 80),
+  ("Burger", "Restauration rapide", 80),
+  ("Fraisier", "Pâtisserie", 8);
