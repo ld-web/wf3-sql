@@ -154,3 +154,36 @@ WHERE capacite = (
     SELECT MAX(capacite)
     FROM rayon
   );
+--
+--
+-- COUNT permet de compter le nombre de lignes dans la table
+-- On peut y associer une clause WHERE pour compter le nombre de lignes
+-- correspondant à un certain critère (ou une certaine condition)
+SELECT COUNT(*)
+FROM rayon;
+--
+--
+-- On peut utiliser le mot-clé 'AS' pour appliquer un alias sur la colonne demandée
+-- Le serveur utilise donc cet alias en tant que libellé d'en-tête
+-- Les alias sont optionnels, on peut en définir sur 0, 1 ou plusieurs colonnes de manière indépendante
+SELECT MAX(capacite) AS 'max',
+  -- valeur minimale
+  MIN(capacite) AS 'min',
+  -- Somme
+  SUM(capacite) AS 'somme',
+  -- Moyenne
+  AVG(capacite) AS 'moyenne'
+FROM rayon;
+--
+--
+-- Agrégation de résultats :
+-- Avec la clause GROUP BY, on va agréger (ou assembler, ou regrouper) des résultats
+-- afin de pouvoir effectuer des calculs dessus
+-- Ce regroupement va s'effectuer selon une donnée précise
+-- Ci-dessous : l'emplacement.
+-- Ainsi, dans l'exemple ci-dessous, le fait d'agréger les résultats par emplacement
+-- nous permet de calculer la moyenne des capacités par emplacement
+SELECT emplacement,
+  ROUND(AVG(capacite), 2) AS 'moyenne'
+FROM rayon
+GROUP BY emplacement;
