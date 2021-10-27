@@ -1,5 +1,4 @@
 INSERT INTO `produit` (
-    `id`,
     `nom`,
     `prix_ht`,
     `content_desc`,
@@ -8,7 +7,6 @@ INSERT INTO `produit` (
     `rayon_id`
   )
 VALUES (
-    1,
     'Pantalon',
     '999.99',
     "L'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble.",
@@ -17,7 +15,6 @@ VALUES (
     NULL
   ),
   (
-    2,
     'Kiwi',
     '75.33',
     'la bureautique informatique, sans que son contenu ne soit modifié.',
@@ -26,7 +23,6 @@ VALUES (
     25
   ),
   (
-    3,
     'Pain',
     '999.99',
     'Depuis les années 1500, quand un imprimeur anonyme assembla ensemble.',
@@ -35,7 +31,6 @@ VALUES (
     10
   ),
   (
-    4,
     'Tacos',
     '500.45',
     'Quand un imprimeur anonyme assembla ensemble.',
@@ -44,7 +39,6 @@ VALUES (
     21
   ),
   (
-    5,
     'Chemise',
     '100.00',
     'Limprimerie depuis les années 1500.',
@@ -53,7 +47,6 @@ VALUES (
     26
   ),
   (
-    6,
     'Costume',
     '275.00',
     NULL,
@@ -62,7 +55,6 @@ VALUES (
     26
   ),
   (
-    7,
     'Lunette',
     '999.99',
     'Lextrait standard de Lorem Ipsum utilisé depuis le XVIè siècle.',
@@ -71,7 +63,6 @@ VALUES (
     NULL
   ),
   (
-    8,
     'Ceinture',
     '500.00',
     'Lorem Ipsum, vous devez être sûr quil ny a rien dembarrassant caché dans le texte.',
@@ -80,7 +71,6 @@ VALUES (
     26
   ),
   (
-    9,
     'Chaussure',
     '999.99',
     'un imprimeur anonyme assembla ensemble maman de.',
@@ -89,7 +79,6 @@ VALUES (
     26
   ),
   (
-    10,
     'poudre',
     '999.99',
     'anonyme assembla les erreurs du passé.',
@@ -99,7 +88,6 @@ VALUES (
   ),
   (11, 'Sucre', '450.00', NULL, NULL, 56, NULL),
   (
-    12,
     'Sel',
     '540.00',
     'Plusieurs versions sont apparues avec le temps.',
@@ -108,7 +96,6 @@ VALUES (
     NULL
   ),
   (
-    13,
     'Savon',
     '200.00',
     'Depuis quelques années,un imprimeur cherche le sous',
@@ -117,7 +104,6 @@ VALUES (
     NULL
   ),
   (
-    14,
     'Biscuit',
     '750.00',
     NULL,
@@ -126,7 +112,6 @@ VALUES (
     NULL
   ),
   (
-    15,
     'Gesier',
     '900.00',
     'un imprimeur anonyme va vers les clients',
@@ -135,7 +120,6 @@ VALUES (
     4
   ),
   (
-    16,
     'Poulet',
     '600.00',
     'Limprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble.',
@@ -144,7 +128,6 @@ VALUES (
     4
   ),
   (
-    17,
     'Manque',
     '300.00',
     'Contrairement à une opinion répandue, le Lorem Ipsum',
