@@ -243,3 +243,6 @@ SELECT produit.nom,
   rayon.nom
 FROM produit
   LEFT JOIN rayon ON produit.rayon_id = rayon.id;
+-- Combien de produits pour un rayon donné ?
+-- Afficher le nombre de produits par rayon
+-- Afficher les noms des rayons non vides, par ordre alphabétique
