@@ -204,3 +204,42 @@ CREATE TABLE produit (
   rayon_id INT,
   FOREIGN KEY (rayon_id) REFERENCES rayon(id)
 ) ENGINE = INNODB;
+--
+--
+-- DELETE permet d'effacer une ou plusieurs lignes
+-- ATTENTION : sa forme ressemble à SELECT
+-- Mais il n'est pas nécessaire de préciser de colonnes
+-- En effet, si on est en train d'effacer des lignes, on ne va pas se poser la question des colonnes de ces lignes
+-- La commande de base agirait donc sur l'ensemble de la table
+-- (DELETE FROM table)
+-- On peut ensuite y ajouter une clause WHERE pour réduire l'ensemble concerné
+-- et donc supprimer quelques lignes bien ciblées
+DELETE FROM rayon
+WHERE emplacement = "Pâtisserie";
+--
+--
+-- Création d'un rayon Pâtisserie
+INSERT INTO rayon (nom, emplacement, capacite)
+VALUES ("Pâtisserie", "Rez-de-chaussée", 400);
+--
+--
+-- JOINTURE : à partir d'un ensemble donné, ici la table produit,
+-- on va joindre un second ensemble, ici rayon.
+-- La directive INNER JOIN signifie que l'on conservera les résultats se trouvant à l'intersection des deux ensembles.
+-- Le mot-clé ON, lui, permet de préciser ce qu'on appelle le critère de jointure.
+-- Avec ON, on indique à MySQL sur quel critère joindre un produit et un rayon.
+-- Donc, sur quel critère faire basculer un résultat dans l'intersection des deux ensembles.
+SELECT produit.nom,
+  produit.prix_ht,
+  rayon.nom
+FROM produit
+  INNER JOIN rayon ON produit.rayon_id = rayon.id;
+--
+--
+-- LEFT JOIN, lui, à la différence de INNER JOIN, va conserver tous les éléments de l'ensemble de gauche.
+-- Dans le cas ci-dessous, on va donc retrouver tous les produits, c'est-à-dire même ceux qui n'ont pas de rayon associé
+SELECT produit.nom,
+  produit.prix_ht,
+  rayon.nom
+FROM produit
+  LEFT JOIN rayon ON produit.rayon_id = rayon.id;
