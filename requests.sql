@@ -86,9 +86,71 @@ WHERE nom LIKE "%ri%";
 -- On peut trier les résultats par ordre croissant (par défaut) ou décroissant
 -- Pour trier par ordre croissant, on utilisera ASC (pour ordre ASCendant)
 -- Pour trier par ordre décroissant, on utilisera DESC (pour ordre DESCendant)
--- On peut également trier les résultats sur plusieurs niveaux (ou plusieurs colonnes)
-SELECT *
+-- On peut également trier les résultats sur plusieurs niveaux (ou plusieurs colonnes), dans ce cas, séparer les colonnes par des virgules
+SELECT id,
+  nom,
+  capacite
 FROM rayon
 WHERE capacite IS NOT NULL
 ORDER BY capacite DESC,
   id DESC;
+--
+--
+-- Pour limiter le nombre de résultats, utiliser LIMIT
+SELECT *
+FROM rayon
+ORDER BY nom
+LIMIT 3;
+-- Si je veux le nom et la capacité des 3 premiers rayons dont le nom commence par "B", triés par ordre alphabétique
+-- OFFSET permet de commencer la sélection de X résultats à partir d'un certain endroit.
+-- Ici par exemple, j'ai 4 enregistrements qui commencent par "T".
+-- Je souhaite limiter mon nombre d'enregistrements à 3.
+-- Mes offsets commencent à 0, ainsi, je peux décider de renvoyer les 3 premiers résultats, ou bien les 3 premiers en partant du second, du troisième, etc...
+-- Souvent utilisé pour implémenter un système de pagination
+SELECT nom,
+  capacite
+FROM rayon
+WHERE nom LIKE "T%"
+ORDER BY nom
+LIMIT 3 OFFSET 2;
+--
+-- Exercices :
+-- Afficher les noms des rayons ayant une capacité NULL par ordre alphabétique
+SELECT nom
+FROM rayon
+WHERE capacite IS NULL
+ORDER BY nom ASC;
+-- Afficher les noms, emplacements et les capacités des rayons dont le nom finit par "s", par capacité décroissante
+SELECT nom,
+  emplacement,
+  capacite
+FROM rayon
+WHERE nom LIKE "%s"
+  AND capacite IS NOT NULL
+ORDER BY capacite DESC;
+--
+--
+-- On peut utiliser des fonctions dans notre SELECT
+-- pour récupérer directement des valeurs "calculées"
+-- Valeur max
+SELECT MAX(capacite),
+  -- valeur minimale
+  MIN(capacite),
+  -- Somme
+  SUM(capacite),
+  -- Moyenne
+  AVG(capacite)
+FROM rayon;
+--
+-- Afficher le nom et l'emplacement du rayon ayant la capacité maximale
+-- Utilisation d'une sous-requête : on veut les informations
+-- du rayon dont la capacité est égale au maximum des capacités de mes rayons.
+-- Pour avoir le maximum des capacités de rayons, que je ne peux connaître à l'avance, je dois lancer une sous-requête pour récupérer la valeur
+SELECT nom,
+  emplacement,
+  capacite
+FROM rayon
+WHERE capacite = (
+    SELECT MAX(capacite)
+    FROM rayon
+  );
