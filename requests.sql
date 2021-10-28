@@ -82,6 +82,12 @@ FROM rayon
 WHERE nom LIKE "%ri%";
 --
 --
+-- IN avec une clause WHERE, peut permettre de chercher par une énumération de valeurs
+SELECT *
+FROM rayon
+WHERE id IN (6, 26, 8, 150);
+--
+--
 -- Tri des résultats avec le mot-clé ORDER BY
 -- On peut trier les résultats par ordre croissant (par défaut) ou décroissant
 -- Pour trier par ordre croissant, on utilisera ASC (pour ordre ASCendant)
@@ -243,6 +249,14 @@ SELECT produit.nom,
   rayon.nom
 FROM produit
   LEFT JOIN rayon ON produit.rayon_id = rayon.id;
+--
 -- Combien de produits pour un rayon donné ?
--- Afficher le nombre de produits par rayon
+SELECT rayon.nom,
+  COUNT(produit.id) AS "nombre de produits"
+FROM rayon
+  LEFT JOIN produit ON rayon.id = produit.rayon_id
+WHERE rayon.id = 6;
+--
+-- Afficher le nombre de produits par rayon : afficher le nom du rayon et son nombre de produits
+--
 -- Afficher les noms des rayons non vides, par ordre alphabétique
