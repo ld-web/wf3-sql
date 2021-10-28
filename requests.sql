@@ -47,6 +47,7 @@ FROM rayon;
 -- sélectionner une ou plusieurs colonnes
 SELECT nom
 FROM rayon;
+--
 SELECT nom,
   emplacement,
   capacite
@@ -126,7 +127,7 @@ SELECT nom
 FROM rayon
 WHERE capacite IS NULL
 ORDER BY nom ASC;
--- Afficher les noms, emplacements et les capacités des rayons dont le nom finit par "s", par capacité décroissante
+-- Afficher les noms, emplacements et les capacités des rayons dont le nom finit par "s" et qui ont bien une capacité (non nulle), par capacité décroissante
 SELECT nom,
   emplacement,
   capacite
