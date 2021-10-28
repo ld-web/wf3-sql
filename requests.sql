@@ -265,3 +265,35 @@ FROM rayon
 GROUP BY rayon.id;
 --
 -- Afficher le nom et le nombre de produits des rayons non vides, par ordre alphabétique
+--
+-- Utilisation de HAVING pour ajouter une condition sur l'agrégat.
+-- Ici, j'agrège les résultats par ID de rayon, puis
+-- je ne conserve que les rayons ayant un nombre de produits correspondants suppérieur à 0
+SELECT rayon.nom,
+  COUNT(produit.id) AS "Nombre"
+FROM rayon
+  LEFT JOIN produit ON rayon.id = produit.rayon_id
+GROUP BY rayon.id
+HAVING COUNT(produit.id) > 0
+ORDER BY rayon.nom;
+-- Autre solution : probablement la meilleure dans ce cas-là
+-- Parce que dans ce cas-là, on utilise directement INNER JOIN
+-- qui va exclure les rayons n'ayant pas de produit correspondant
+-- On n'a donc pas besoin de faire un LEFT JOIN pour inclure
+-- les rayons n'ayant pas de produits, et ensuite les exclure via un HAVING par exemple. Ce serait inutile
+SELECT rayon.nom,
+  COUNT(produit.id) AS "Nombre"
+FROM rayon
+  INNER JOIN produit ON rayon.id = produit.rayon_id
+GROUP BY rayon.id
+ORDER BY rayon.nom;
+-- Autre solution, dans la veine de la première.
+-- On conserve notre LEFT JOIN puis on exclut les rayons n'ayant pas de produits
+-- cette fois-ci en reproduisant un INNER JOIN avec produit.id IS NOT NULL
+SELECT rayon.nom,
+  COUNT(produit.id) AS "Nombre"
+FROM rayon
+  LEFT JOIN produit ON rayon.id = produit.rayon_id
+WHERE produit.id IS NOT NULL
+GROUP BY rayon.id
+ORDER BY rayon.nom;
