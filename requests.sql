@@ -258,5 +258,10 @@ FROM rayon
 WHERE rayon.id = 6;
 --
 -- Afficher le nombre de produits par rayon : afficher le nom du rayon et son nombre de produits
+SELECT rayon.nom,
+  COUNT(produit.id) AS "Nombre"
+FROM rayon
+  LEFT JOIN produit ON rayon.id = produit.rayon_id
+GROUP BY rayon.id;
 --
--- Afficher les noms des rayons non vides, par ordre alphabétique
+-- Afficher le nom et le nombre de produits des rayons non vides, par ordre alphabétique
