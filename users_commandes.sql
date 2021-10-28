@@ -1,0 +1,143 @@
+CREATE TABLE utilisateur (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nom VARCHAR(255) NOT NULL,
+  prenom VARCHAR(255) NOT NULL,
+  date_naissance DATE,
+  email VARCHAR(255) NOT NULL,
+  login VARCHAR(255) NOT NULL,
+  mot_de_passe VARCHAR(255) NOT NULL
+) ENGINE = INNODB;
+CREATE TABLE commande (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  date_commande DATE NOT NULL,
+  utilisateur_id INT NOT NULL,
+  FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
+) ENGINE = INNODB;
+CREATE TABLE ligne_commande (
+  produit_id INT NOT NULL,
+  commande_id INT NOT NULL,
+  qte INT NOT NULL DEFAULT 1,
+  prix_ht DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY (produit_id, commande_id),
+  FOREIGN KEY (produit_id) REFERENCES produit(id),
+  FOREIGN KEY (commande_id) REFERENCES commande(id)
+) ENGINE = INNODB;
+INSERT INTO `utilisateur` (
+    `id`,
+    `nom`,
+    `prenom`,
+    `date_naissance`,
+    `email`,
+    `login`,
+    `mot_de_passe`
+  )
+VALUES (
+    NULL,
+    'Dylan',
+    'Bob',
+    '1950-03-15',
+    'bob@dylan.com',
+    'ola',
+    'hdscvsf'
+  ),
+  (
+    NULL,
+    'Joplin',
+    'Janis',
+    '1945-06-28',
+    'janis@gmail.com',
+    '妳好',
+    'ovjfsjiuoczd'
+  ),
+  (
+    NULL,
+    'Joplin',
+    'Scott',
+    '1880-01-05',
+    'scott@jopl.in',
+    'Oi',
+    'sdicbudsi'
+  ),
+  (
+    NULL,
+    'Bach',
+    'Jean-Sébastien',
+    '2005-08-05',
+    'jean-seb@stien.bach',
+    'priviet',
+    'wixhcdyhua'
+  );
+INSERT INTO `commande` (`id`, `date_commande`, `utilisateur_id`)
+VALUES (NULL, '2021-10-04', '2'),
+  (NULL, '2020-10-12', '3'),
+  (NULL, '2021-08-16', '5'),
+  (NULL, '2021-05-09', '3'),
+  (NULL, '2021-05-16', '4'),
+  (NULL, '2021-03-04', '2'),
+  (NULL, '2021-05-11', '5'),
+  (NULL, '2021-09-13', '3'),
+  (NULL, '2021-07-21', '4'),
+  (NULL, '2021-10-01', '5'),
+  (NULL, '2020-08-11', '3'),
+  (NULL, '2020-08-02', '5'),
+  (NULL, '2021-07-03', '5'),
+  (NULL, '2021-10-04', '2'),
+  (NULL, '2021-08-18', '4'),
+  (NULL, '2021-07-02', '3'),
+  (NULL, '2021-02-08', '4'),
+  (NULL, '2021-10-02', '5'),
+  (NULL, '2021-08-22', '2'),
+  (NULL, '2020-09-23', '5');
+INSERT INTO `ligne_commande`(
+    `produit_id`,
+    `commande_id`,
+    `qte`,
+    `prix_ht`
+  )
+VALUES('17', '1', '5', '50'),
+  ('1', '15', '1', '250'),
+  ('5', '2', '2', '40'),
+  ('13', '10', '50', '600'),
+  ('5', '3', '1', '90'),
+  ('12', '5', '2', '40'),
+  ('10', '5', '4', '90'),
+  ('16', '7', '3', '60'),
+  ('5', '5', '9', '40'),
+  ('4', '6', '2', '20'),
+  ('4', '7', '3', '42'),
+  ('15', '8', '8', '8'),
+  ('12', '9', '70', '700'),
+  ('1', '10', '1', '60'),
+  ('9', '10', '1', '60'),
+  ('13', '11', '1', '30'),
+  ('8', '12', '2', '28'),
+  ('7', '12', '1', '500'),
+  ('5', '13', '8', '70'),
+  ('2', '14', '2', '80'),
+  ('12', '14', '7', '21'),
+  ('4', '15', '2', '15'),
+  ('8', '15', '10', '50'),
+  ('12', '16', '2', '50'),
+  ('7', '17', '1', '150'),
+  ('12', '18', '5', '40'),
+  ('9', '19', '8', '50'),
+  ('16', '19', '1', '200'),
+  ('2', '20', '1', '70'),
+  ('15', '19', '4', '40'),
+  ('8', '17', '4', '40'),
+  ('12', '15', '2', '8'),
+  ('2', '15', '4', '60'),
+  ('17', '14', '5', '150'),
+  ('12', '13', '2', '12'),
+  ('16', '12', '2', '45'),
+  ('13', '15', '6', '60'),
+  ('10', '10', '1', '30'),
+  ('7', '10', '7', '70'),
+  ('17', '7', '12', '24'),
+  ('13', '3', '5', '90'),
+  ('16', '10', '7', '70'),
+  ('8', '11', '1', '50'),
+  ('17', '16', '4', '36'),
+  ('9', '6', '1', '15'),
+  ('17', '12', '100', '500'),
+  ('2', '4', '1', '45')
