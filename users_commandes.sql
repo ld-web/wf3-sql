@@ -33,6 +33,15 @@ INSERT INTO `utilisateur` (
   )
 VALUES (
     NULL,
+    'test',
+    'test',
+    '1980-05-20',
+    'test@test.com',
+    'hello world',
+    'hop hop hop'
+  ),
+(
+    NULL,
     'Dylan',
     'Bob',
     '1950-03-15',
